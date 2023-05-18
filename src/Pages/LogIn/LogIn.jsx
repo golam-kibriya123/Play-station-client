@@ -2,8 +2,15 @@ import loginPhoto from '../../assets/login.jpg'
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const LogIn = () => {
+    const { setTitle } = useContext(AuthContext);
+    useEffect(() => {
+        setTitle("Login")
+    })
+
     return (
         <div className=' h-[100vh]'>
 

@@ -6,9 +6,12 @@ import router from './Routers/Router.jsx'
 import AuthProvider from './Providers/AuthProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
-  </React.StrictMode>,
+  <div className='max-w-7xl'>
+    <React.StrictMode>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </React.StrictMode>
+  </div>
+
 )

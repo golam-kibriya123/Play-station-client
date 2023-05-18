@@ -1,9 +1,16 @@
+import { useContext, useEffect } from 'react';
 import loginPhoto from '../../assets/login.jpg'
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const SingUp = () => {
+    const { setTitle } = useContext(AuthContext);
+    useEffect(() => {
+        setTitle("SingUp")
+    })
+
     return (
         <div className=' '>
 
