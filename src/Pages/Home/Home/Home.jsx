@@ -4,6 +4,8 @@ import Nav from "../../Shared/Nav";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
 import Categories from "../Categories/Categories";
+import Hot from "../Hot/HOt";
+import Best from "../Best/Best";
 
 const Home = () => {
     const { setTitle } = useContext(AuthContext);
@@ -17,7 +19,8 @@ const Home = () => {
             <Banner></Banner>
             <Gallery></Gallery>
             <Categories></Categories>
-            <h1>this is home</h1>
+            <Hot></Hot>
+            <Best></Best>
         </div>
     );
 };
