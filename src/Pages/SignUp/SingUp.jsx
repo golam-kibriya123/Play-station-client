@@ -4,13 +4,51 @@ import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const SingUp = () => {
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("SingUp")
     })
+    const { createUser, auth } = useContext(AuthContext);
 
+    const update = (name, photo) => {
+        updateProfile(auth.currentUser, {
+            displayName: `${name}`, photoURL: `${photo}`
+        }).then(() => {
+            // Profile updated!
+            // ...
+        }).catch((error) => {
+            // An error occurred
+            console.log(error)
+        });
+    }
+
+    const createUserHandler = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const user = { photo, name, email, password };
+        createUser(email, password)
+            .then((result) => {
+                // Signed in 
+                const createdUser = result.user;
+                // 
+                update(name, photo)
+                console.log(createdUser)
+
+            })
+            .catch((error) => {
+                console.log(error)
+                // ..
+            });
+        console.log(user)
+
+    }
     return (
         <div className='my-14 '>
 
@@ -25,7 +63,7 @@ const SingUp = () => {
                             <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                                 Sign in to your account
                             </h1>
-                            <form className="space-y-4 md:space-y-6 z-20 text-white" >
+                            <form className="space-y-4 md:space-y-6 z-20 text-white" onSubmit={createUserHandler} >
                                 <div>
                                     <label htmlFor="name" className="block mb-2 text-sm font-medium ">Your Name</label>
                                     <input type="text" name="name" id="name" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="Your Name" required />
