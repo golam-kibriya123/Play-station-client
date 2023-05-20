@@ -16,17 +16,17 @@ const Categories = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/category/Marvel`)
+        fetch(`https://play-station-server.vercel.app/category/Marvel`)
             .then(res => res.json())
             .then(data => setMarvel(data))
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/category/transformers`)
+        fetch(`https://play-station-server.vercel.app/category/transformers`)
             .then(res => res.json())
             .then(data => setTransformers(data))
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/category/dc-multiverse`)
+        fetch(`https://play-station-server.vercel.app/category/dc-multiverse`)
             .then(res => res.json())
             .then(data => setMultiverse(data))
     }, []);
@@ -64,7 +64,7 @@ const Categories = () => {
                                             <h2 className=" bg-[#209CEE] text-white text-lg font-bold  ">Lorem, ipsum.</h2>
                                             <div className=' text-w'>
                                                 <p>price: <span>{x.price}</span> $ </p>
-                                                <p>price: <span>{x.rating}</span> </p>
+                                                <p>Rating: <span>{x.rating}</span> </p>
                                             </div>
                                             <Link to={`/details/${x._id}`} className='  p-1  border-2 border-[#209CEE] cursor-pointer text-white   font-bold hover:bg-[#209CEE]  '>Details</Link>
                                         </div>
@@ -91,7 +91,7 @@ const Categories = () => {
                                             <h2 className=" bg-[#209CEE] text-white text-lg font-bold  ">Lorem, ipsum.</h2>
                                             <div className=' text-w'>
                                                 <p>price: <span>{x.price}</span> $ </p>
-                                                <p>price: <span>{x.rating}</span> </p>
+                                                <p>Rating: <span>{x.rating}</span> </p>
                                             </div>
                                             <Link to={`/details/${x._id}`} className='  p-1  border-2 border-[#209CEE] cursor-pointer text-white   font-bold hover:bg-[#209CEE]  '>Details</Link>
                                         </div>
@@ -118,7 +118,7 @@ const Categories = () => {
                                             <h2 className=" bg-[#209CEE] text-white text-lg font-bold  ">Lorem, ipsum.</h2>
                                             <div className=' text-w'>
                                                 <p>price: <span>{x.price}</span> $ </p>
-                                                <p>price: <span>{x.rating}</span> </p>
+                                                <p>Rating: <span>{x.rating}</span> </p>
                                             </div>
                                             <Link to={`/details/${x._id}`} className='  p-1  border-2 border-[#209CEE] cursor-pointer text-white   font-bold hover:bg-[#209CEE]  '>Details</Link>
                                         </div>

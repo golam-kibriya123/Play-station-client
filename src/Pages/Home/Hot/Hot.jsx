@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Hot = () => {
     const [hots, setHots] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/hot')
+        fetch('https://play-station-server.vercel.app/hot')
             .then(res => res.json())
             .then(data => setHots(data))
     }, [])

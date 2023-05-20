@@ -32,12 +32,12 @@ const router = createBrowserRouter([
             {
                 path: '/all',
                 element: <AllToys></AllToys>,
-                loader: () => fetch('http://localhost:5000/toys')
+                loader: () => fetch('https://play-station-server.vercel.app/toys')
             },
             {
                 path: '/details/:id',
                 element: <Details></Details>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://play-station-server.vercel.app/toys/${params.id}`)
 
             }
         ]
