@@ -11,6 +11,7 @@ const Gallery = () => {
         Aos.init({})
     }, [])
 
+
     return (
 
         <div className='mt-10 ' data-aos="zoom-in" data-aos-duration="800" data-aos-offset="200">
@@ -32,6 +33,7 @@ const Gallery = () => {
                         <img className="h-full max-w-full rounded-lg" src="https://img.freepik.com/free-photo/ants-mission-cute-robots-space-suits-adventure-outward-generative-ai_8829-2868.jpg?size=626&ext=jpg&ga=GA1.1.293727738.1671602860&semt=ais" alt="" />
                     </div>
                 </div>
+
                 <div className="grid gap-4">
                     <div data-aos="zoom-in" data-aos-duration="800" data-aos-offset="200" >
                         <img className="h-full max-w-full rounded-lg" src="https://img.freepik.com/free-photo/two-futuristic-robots-before-match-blue-red-color-generative-ai_191095-1280.jpg?size=626&ext=jpg&ga=GA1.1.293727738.1671602860&semt=ais" alt="" />

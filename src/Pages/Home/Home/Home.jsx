@@ -10,7 +10,8 @@ const Home = () => {
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("Home")
-    })
+    });
+ 
 
     return (
         <div>
