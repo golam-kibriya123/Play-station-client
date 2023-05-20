@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Toy = ({ toys }) => {
-    console.log(toys)
     const { product_name, price, sub_category, quantity, seller, _id } = toys;
     return (
         <tr className=" text-[#209CEE]">

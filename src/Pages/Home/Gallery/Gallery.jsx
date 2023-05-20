@@ -6,7 +6,7 @@ import 'aos/dist/aos.css';
 
 
 const Gallery = () => {
- 
+
     useEffect(() => {
         Aos.init({})
     }, [])
