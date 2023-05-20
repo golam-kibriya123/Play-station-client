@@ -9,7 +9,6 @@ const Hot = () => {
             .then(res => res.json())
             .then(data => setHots(data))
     }, [])
-    console.log(hots)
 
     return (
         <div className='my-20 flex flex-col justify-center items-center'>

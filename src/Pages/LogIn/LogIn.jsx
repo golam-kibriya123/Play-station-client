@@ -6,10 +6,26 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const LogIn = () => {
-    const { setTitle } = useContext(AuthContext);
+
+    const { logIn, setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("Login")
     })
+    const handelLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const pass = form.password.value;
+        const email = form.email.value;
+        logIn(email, pass)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            });
+    }
 
     return (
         <div className=' h-[100vh]'>
@@ -25,7 +41,7 @@ const LogIn = () => {
                             <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                                 Sign in to your account
                             </h1>
-                            <form className="space-y-4 md:space-y-6 z-20 text-white" >
+                            <form className="space-y-4 md:space-y-6 z-20 text-white" onSubmit={handelLogin}>
                                 <div>
                                     <label htmlFor="email" className="block mb-2 text-sm font-medium ">Your email</label>
                                     <input type="email" name="email" id="email" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="name@company.com" required />

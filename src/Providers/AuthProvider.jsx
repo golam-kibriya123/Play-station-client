@@ -30,6 +30,8 @@ const AuthProvider = ({ children }) => {
 
     // create user
     const [user, setUser] = useState(null);
+    const userName = user?.displayName;
+    const userPhoto = user?.photoURL;
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth,
             currentUser => {
@@ -49,7 +51,9 @@ const AuthProvider = ({ children }) => {
         createUser,
         logIn,
         user,
-        auth
+        auth,
+        userName,
+        userPhoto
     };
 
     return (
