@@ -4,8 +4,7 @@ import app from "../Firebase/firebase.config";
 
 
 export const AuthContext = createContext();
-const auth = getAuth(app)
-
+const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
     //app title
@@ -48,7 +47,6 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
     // log Out
-    const auth = getAuth();
     const logout = () => {
         return signOut(auth)
 

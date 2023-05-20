@@ -72,7 +72,15 @@ const LogIn = () => {
     return (
         <div className=' h-[100vh]'>
 
+
+
+
+
             <section className=" ">
+
+
+
+
                 <div className="flex flex-col items-center  justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-[#209CEE] dark:text-white">
                         <img className="w-8 h-8  " src="/public/logo.png" alt="logo" />
@@ -118,6 +126,7 @@ const LogIn = () => {
                                 <BsGoogle onClick={google} className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
                                 <FaFacebookF className=' bg-white p-1 rounded border-2 border-[#209CEE]     disabled' />
                             </div>
+
                             <p className="text-sm font-light  text-white">
                                 Don’t have an account yet? <Link to={'/SingUp'} className="font-medium  hover:underline dark:text-blue-500">Sign up</Link>
                             </p>

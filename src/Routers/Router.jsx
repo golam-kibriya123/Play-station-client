@@ -6,6 +6,7 @@ import SingUp from "../Pages/SignUp/SingUp";
 import BlogOne from "../Pages/Blogs/BlogOne";
 import AllToys from "../Pages/AllToys/AllToys";
 import Details from "../Pages/AllToys/Details";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +37,10 @@ const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <Details></Details>,
+                element:
+                    <PrivateRoute>
+                        <Details></Details>
+                    </PrivateRoute>,
                 loader: ({ params }) => fetch(`https://play-station-server.vercel.app/toys/${params.id}`)
 
             }
