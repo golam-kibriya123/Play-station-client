@@ -1,11 +1,10 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import Nav from "../../Shared/Nav";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
 import Categories from "../Categories/Categories";
-import Hot from "../Hot/HOt";
 import Best from "../Best/Best";
+import Hot from "../Hot/Hot";
 
 const Home = () => {
     const { setTitle } = useContext(AuthContext);
@@ -15,7 +14,6 @@ const Home = () => {
 
     return (
         <div>
-            <Nav></Nav>
             <Banner></Banner>
             <Gallery></Gallery>
             <Categories></Categories>

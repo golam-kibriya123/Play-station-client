@@ -1,17 +1,21 @@
-import Nav from "../Shared/Nav";
 import logo from '../../assets/logo.png'
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 const BlogOne = () => {
 
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("Blogs")
-    })
+    });
+    useEffect(() => {
+        AOS.init();
+    }, [])
     return (
         <div>
-            <Nav></Nav>
             <div className='flex  h-12 mx-auto justify-center my-5'>
                 <img src={logo} alt="" className='border-2 border-[#209CEE]' />
                 <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>Daily Blogs</h1>
@@ -23,17 +27,18 @@ const BlogOne = () => {
                         <p className="h-full text-[#209CEE] text-2xl border-2 border-[#209CEE] font-bold p-1">To</p>
                         <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>ken</h1>
                     </div>
-                    <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>What is an access token and refresh token?</h1>
+
                     <div>
+                        <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>What is an access token and refresh token?</h1>
                         <h1 className=" text-2xl font-bold text-[#209CEE] cursor-pointer hover:underline ">Access token </h1>
                         <p>An access token is a credential that is issued by an authentication server (such as an OAuth server) to an application after successful authentication and authorization. It represents the authorization granted to the application to access specific resources or perform certain actions on behalf of the user. The access token is usually a string of characters that the application includes in each request to the protected resource server. It serves as proof of authentication and permission, allowing the application to access the protected resources for a limited period of time.</p>
                     </div>
-                    <div>
+                    <div >
 
                         <h1 className=" text-2xl font-bold text-[#209CEE] cursor-pointer hover:underline ">Refresh Token </h1>
                         <p>A refresh token is a credential that is also issued by the authentication server along with the access token. While the access token has a limited lifespan, the refresh token is typically long-lived and used to obtain a new access token once the previous one expires. The application can use the refresh token to make a request to the authentication server, asking for a fresh access token without requiring the user to re-authenticate. This process is known as token refreshing or token rotation. Refresh tokens are important for security because they limit the lifespan of access tokens and provide a way to revoke access without the user is involvement.</p>
                     </div>
-                    <div>
+                    <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200">
                         <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>How do they work and where should we store them on the client-side?</h1>
                         <div>
                             <h1 className=" text-2xl font-bold text-[#209CEE] cursor-pointer hover:underline ">Obtaining Access and Refresh Tokens:</h1>
@@ -55,7 +60,7 @@ const BlogOne = () => {
 
 
 
-                <div id="database" className="border-b pb-5">
+                <div id="database" className="border-b pb-5" data-aos="fade-up" data-aos-duration="1000">
                     <div className='flex  h-12 mx-auto justify-center mb-5'>
                         <p className="h-full text-[#209CEE] text-2xl border-2 border-[#209CEE] font-bold p-1">SQL and NoSQL</p>
                         <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'> databases</h1>
@@ -71,7 +76,7 @@ const BlogOne = () => {
                     </div>
                 </div>
 
-                <div id="JavaScript" className="border-b pb-5">
+                <div id="JavaScript" className="border-b pb-5" data-aos="fade-up" data-aos-duration="1000">
                     <div className='flex  h-12 mx-auto justify-center mb-5'>
                         <p className="h-full text-[#209CEE] text-2xl border-2 border-[#209CEE] font-bold p-1">JavaScript</p>
                         <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>Frameworks</h1>
@@ -88,7 +93,7 @@ const BlogOne = () => {
                 </div>
 
 
-                <div id="tokens">
+                <div id="tokens" data-aos="fade-up" data-aos-duration="1000">
                     <div className='flex  h-12 mx-auto justify-center mb-5'>
                         <p className="h-full text-[#209CEE] text-2xl border-2 border-[#209CEE] font-bold p-1">Mongo</p>
                         <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>DB</h1>

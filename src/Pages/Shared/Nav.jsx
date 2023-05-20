@@ -9,7 +9,7 @@ const Nav = () => {
     const navMenu = () => {
         setCountClick(!countClick)
     }
-    console.log(countClick)
+
     return (
 
         <div className='sticky top-0 z-30'>
