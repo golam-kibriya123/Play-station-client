@@ -1,9 +1,16 @@
-import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { BsStarFill } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Details = () => {
+
+    const { setTitle } = useContext(AuthContext);
+    useEffect(() => {
+        setTitle("Details")
+    });
+    const navigate = useNavigate()
     const data = useLoaderData();
     const toy = data[0];
     const { product_name, price, seller_email, sub_category, seller, photo, quantity, rating, category, details } = toy;
@@ -33,7 +40,7 @@ const Details = () => {
     if (rating >= 4) {
         four = true
     }
-    if (rating > 4 && rating <5) {
+    if (rating > 4 && rating < 5) {
         _four = true
     }
     if (rating == 5) {
@@ -74,8 +81,9 @@ const Details = () => {
                         </div>
                     </div>
 
-                    <div className="card-actions justify-end">
-                        <button className="btn  bg-[#209CEE] ">Add To Curt</button>
+                    <div className=" justify-end flex flex-row">
+                        <button className="btn border-yellow-500 hover:border-yellow-500 hover:text-white bg-white hover:bg-yellow-500 mx-2 text-yellow-500 font-extrabold border-2 ">Add To Cart</button>
+                        <button className="btn  bg-[#209CEE] mx-2" onClick={() => navigate(-1)}>Back</button>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import Toy from "./Toy";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 const AllToys = () => {
+
+    const { setTitle } = useContext(AuthContext);
+    useEffect(() => {
+        setTitle("All Toys")
+    });
     const allToys = useLoaderData();
     const sliceToy = allToys.slice(0, 20);
     const [toys, setToys] = useState(sliceToy);
