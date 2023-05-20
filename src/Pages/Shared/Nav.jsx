@@ -2,17 +2,21 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { RxCross2 } from 'react-icons/rx';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Nav = () => {
     const [countClick, setCountClick] = useState(false);
     const navMenu = () => {
         setCountClick(!countClick)
     }
-
+    const { user, userPhoto, userName, logout } = useContext(AuthContext);
+    console.log(userPhoto)
     return (
 
         <div className='sticky top-0 z-30'>
+
+
             <div className="navbar relative flex justify-between   bg-white shadow-lg ">
                 <Link to={'/'} className="">
                     <img src={logo} alt="" className="btn btn-ghost hover:bg-white normal-case text-xl" />
@@ -44,18 +48,17 @@ const Nav = () => {
                         </li>
                     </ul>
 
-                    <Link to={'/login'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]  ms-5 '>Login</Link>
+                    <Link to={'/login'} className={`  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]  ms-5 ${user && 'hidden'}`}>Login</Link>
+                    <Link onClick={logout} className={`  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]  ms-5 ${user || 'hidden'}`}>Logout</Link>
 
                 </div>
                 <div className=" gap-2 mr-3 ">
-                    <form className="form-control md:flex  flex-row hidden ">
-                        <input type="text" placeholder="Search" className="input  border-[#209CEE] rounded-r-none border-r-0 focus:outline-none outline-none" />
-                        <input type='submit' className='border border-[#209CEE] input rounded-l-none focus:outline-none cursor-pointer bg-[#209CEE] text-white font-bold hover:bg-white hover:text-[#209CEE]' value={'Search'} />
-                    </form>
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className=" btn-circle avatar ">
 
-                            <img src={logo} alt='user' className='w-10 rounded-full' />
+
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className=" btn-circle avatar tooltip tooltip-left tooltip-success" data-tip={`${userName ? `${userName}` : 'no user'}`}>
+
+                            <img src={userPhoto} alt='user' className='w-10 rounded-full ' />
 
                         </label>
 

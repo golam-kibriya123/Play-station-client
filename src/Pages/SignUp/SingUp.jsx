@@ -5,6 +5,7 @@ import { FaFacebookF } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const SingUp = () => {
     const { setTitle } = useContext(AuthContext);
@@ -33,16 +34,33 @@ const SingUp = () => {
         const name = form.name.value;
         const photo = form.photo.value;
         const user = { photo, name, email, password };
+        event.target.reset()
+
         createUser(email, password)
             .then((result) => {
                 // Signed in 
                 const createdUser = result.user;
                 // 
-                update(name, photo)
+                update(name, photo);
+                // alert
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
                 console.log(createdUser)
 
             })
             .catch((error) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`
+
+                })
                 console.log(error)
                 // ..
             });

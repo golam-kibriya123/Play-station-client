@@ -4,10 +4,11 @@ import { FaFacebookF } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const LogIn = () => {
 
-    const { logIn, setTitle } = useContext(AuthContext);
+    const { googleLogin, logIn, setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("Login")
     })
@@ -16,17 +17,58 @@ const LogIn = () => {
         const form = event.target;
         const pass = form.password.value;
         const email = form.email.value;
+        form.reset()
+
         logIn(email, pass)
             .then((userCredential) => {
-                // Signed in 
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your login has been success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 const user = userCredential.user;
                 console.log(user)
             })
             .catch((error) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+
+                })
+                form.reset()
+
                 console.log(error.message)
             });
     }
+    const google = () => {
+        googleLogin()
+            .then((result) => {
 
+                const user = result.user;
+                console.log(user)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your login has been success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${errorCode}`,
+
+                })
+            });
+    }
     return (
         <div className=' h-[100vh]'>
 
@@ -73,8 +115,8 @@ const LogIn = () => {
                                 <button type="submit" className="w-full  hover:bg-white p-1  border-2 hover:border-[#209CEE] cursor-pointer hover:text-[#209CEE] text-white bg-[#209CEE] border-white  ]  focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Sign in</button>
                             </form>
                             <div className='text-[#209CEE] flex justify-center space-x-2 text-3xl'>
-                                <BsGoogle className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
-                                <FaFacebookF className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
+                                <BsGoogle onClick={google} className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
+                                <FaFacebookF className=' bg-white p-1 rounded border-2 border-[#209CEE]     disabled' />
                             </div>
                             <p className="text-sm font-light  text-white">
                                 Don’t have an account yet? <Link to={'/SingUp'} className="font-medium  hover:underline dark:text-blue-500">Sign up</Link>
