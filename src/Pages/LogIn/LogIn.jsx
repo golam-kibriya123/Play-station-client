@@ -14,7 +14,7 @@ const LogIn = () => {
         setTitle("Login")
     });
     const location = useLocation()
-    const from = location.state?.from?.pathname || '/all';
+    const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
 
     const handelLogin = event => {
@@ -63,6 +63,7 @@ const LogIn = () => {
                     timer: 1500
                 })
 
+                navigate(from)
 
             }).catch((error) => {
                 // Handle Errors here.

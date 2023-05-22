@@ -15,7 +15,7 @@ const SingUp = () => {
     useEffect(() => {
         setTitle("SingUp")
     })
-    const { createUser, auth } = useContext(AuthContext);
+    const { createUser, auth, googleLogin } = useContext(AuthContext);
 
     const update = (name, photo) => {
         updateProfile(auth.currentUser, {
@@ -70,6 +70,32 @@ const SingUp = () => {
         console.log(user)
 
     }
+    const google = () => {
+        googleLogin()
+            .then((result) => {
+
+                const user = result.user;
+                console.log(user)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your login has been success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${errorCode}`,
+
+                })
+            });
+    }
     return (
         <div className='my-14 '>
 
@@ -107,7 +133,7 @@ const SingUp = () => {
                                 <button type="submit" className="w-full  hover:bg-white p-1  border-2 hover:border-[#209CEE] cursor-pointer hover:text-[#209CEE] text-white bg-[#209CEE] border-white  ]  focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Submit</button>
                             </form>
                             <div className='text-[#209CEE] flex justify-center space-x-2 text-3xl'>
-                                <BsGoogle className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
+                                <BsGoogle onClick={google} className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
                                 <FaFacebookF className=' bg-white p-1 rounded border-2 border-[#209CEE]     disabled' />
                             </div>
                             <p className="text-sm font-light  text-white">

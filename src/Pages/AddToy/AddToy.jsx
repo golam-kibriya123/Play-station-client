@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import logo from '../../assets/logo.png'
 
 const AddToy = () => {
     const { userName, setTitle } = useContext(AuthContext);
@@ -58,48 +59,47 @@ const AddToy = () => {
         <section className="w-full md:w-[80%] bg-[#209cee6b]  mx-auto my-5 rounded-lg">
             <div >
                 <a className="flex items-center mb-6 text-2xl font-semibold text-[#209CEE] dark:text-white">
-                    <img className="w-8 h-8  " src="/public/logo.png" alt="logo" />
-                    <span className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE] text-xl bg-white'> Play Station</span>
+                    <img className="w-8 h-8  " src={logo} alt="logo" />
+                    <span className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE] text-[#209CEE] text-xl bg-white'> Play Station</span>
                 </a>
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
-                        Add Your Toy
+                    <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white "> Add Your Toy
                     </h1>
-                    <form className=" z-20 text-white grid grid-cols-3 gap-10 w-ful " onSubmit={addToyHandler} >
-                        <div>
+                    <form className=" z-20 text-white grid  md:grid-cols-3  gap-10 w-full " onSubmit={addToyHandler} >
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="toy_ame" className="block mb-2 text-sm font-medium ">Toy Name</label>
                             <input type="text" name="toy_ame" id="toy_ame" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="Toy_ame" required />
                         </div>
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="toy_photo" className="block mb-2 text-sm font-medium ">Toy Photo URL</label>
                             <input type="text" name="toy_photo" id="toy_photo" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="https://...." required />
                         </div>
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="name" className="block mb-2 text-sm font-medium ">Seller Name</label>
                             <input type="text" name="name" id="name" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="Your Name" required />
                         </div>
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="photo" className="block mb-2 text-sm font-medium ">Seller Photo URL</label>
                             <input type="text" name="photo" id="photo" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="https://...." required />
                         </div>
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="email" className="block mb-2 text-sm font-medium ">Seller E-mail</label>
                             <input type="email" name="email" id="email" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="name@company.com" required />
                         </div>
 
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="sub" className="block mb-2 text-sm font-medium ">Sub Category</label>
                             <input type="text" name="sub" id="sub" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="Sub Category of Super Heros Toys" required />
                         </div>
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="price" className="block mb-2 text-sm font-medium ">Toy Price</label>
                             <input type="number" name="price" id="price" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="50$" required />
                         </div>
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="rating" className="block mb-2 text-sm font-medium ">Rating</label>
                             <input type="number" name="rating" id="rating" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="3.5....." required />
                         </div>
-                        <div>
+                        <div className=" col-span-3 md:col-span-1 ">
                             <label htmlFor="quantity" className="block mb-2 text-sm font-medium">Toy Quantity</label>
                             <input type="text" name="quantity" id="quantity" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="How many toys are available " required />
                         </div>

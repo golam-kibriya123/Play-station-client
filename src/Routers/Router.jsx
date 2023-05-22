@@ -49,18 +49,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/add',
-                element: <AddToy></AddToy>
+                element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
             },
             {
                 path: '/myToys/:user_name',
-                element: <MyToys></MyToys>,
-                loader:({params})=>fetch(`https://play-station-server.vercel.app/user/${params.user_name}`)
+                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://play-station-server.vercel.app/user/${params.user_name}`)
             }
             ,
             {
-                path: '/update'
-                ,
-                element: <UpdateToy></UpdateToy>
+                path: '/update/:id',
+                element: <PrivateRoute> <UpdateToy></UpdateToy></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://play-station-server.vercel.app/toys/${params.id}`)
+
             }
         ]
     }

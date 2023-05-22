@@ -19,8 +19,8 @@ const Nav = () => {
             <div className="navbar relative flex justify-between    bg-white shadow-lg ">
                 <Link to={'/'} className="flex items-center ">
 
-                    <img className="w-12 border-2 border-[#209CEE]" src={logo} alt="logo" />
-                    <h1 className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE] text-xl text-white bg-[#209CEE] font-bold'> Play Station</h1>
+                    <img className="w-12 md:border-2 border-[#209CEE]" src={logo} alt="logo" />
+                    <h1 className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE] text-xl text-white bg-[#209CEE] font-bold hidden md:block'> Play Station</h1>
 
                 </Link>
 
@@ -40,13 +40,13 @@ const Nav = () => {
                             <Link to={'/blogs'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '> Blogs</Link>
                         </li>
                         <li>
-                            <Link to={'/add'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>Add A Toy</Link>
+                            <Link to={'/add'} className={`  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] ${user || 'hidden'}`} >Add A Toy</Link>
                         </li>
                         <li>
                             <Link to={'/all'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>All Toys</Link>
                         </li>
                         <li>
-                            <Link to={`/myToys/${userName}`} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>My Toys</Link>
+                            <Link to={`/myToys/${userName}`} className={` p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]  ${user || 'hidden'}`} >My Toys</Link>
                         </li>
                     </ul>
 
@@ -60,7 +60,7 @@ const Nav = () => {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className=" btn-circle avatar tooltip tooltip-left tooltip-success" data-tip={`${userName ? `${userName}` : 'no user'}`}>
 
-                            <img src={userPhoto} alt='user' className={`w-10 rounded-full ${userPhoto || 'hidden'}`} />
+                            <img alt='not found' src={userPhoto} className={`w-10 rounded-full ${userPhoto || 'hidden'}`} />
                             <img src={logo} alt='user' className={`w-10 rounded-full ${userPhoto && 'hidden'}`} />
 
                         </label>
