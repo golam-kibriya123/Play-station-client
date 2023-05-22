@@ -7,6 +7,9 @@ import BlogOne from "../Pages/Blogs/BlogOne";
 import AllToys from "../Pages/AllToys/AllToys";
 import Details from "../Pages/AllToys/Details";
 import PrivateRoute from "./PrivateRoute";
+import AddToy from "../Pages/AddToy/AddToy";
+import MyToys from "../Pages/MyToys/MyToys";
+import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +46,20 @@ const router = createBrowserRouter([
                     </PrivateRoute>,
                 loader: ({ params }) => fetch(`https://play-station-server.vercel.app/toys/${params.id}`)
 
+            },
+            {
+                path: '/add',
+                element: <AddToy></AddToy>
+            },
+            {
+                path: '/myToys',
+                element: <MyToys></MyToys>
+            }
+            ,
+            {
+                path: '/update'
+                ,
+                element: <UpdateToy></UpdateToy>
             }
         ]
     }

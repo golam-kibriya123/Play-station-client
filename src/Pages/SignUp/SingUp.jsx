@@ -105,7 +105,7 @@ const SingUp = () => {
                             </form>
                             <div className='text-[#209CEE] flex justify-center space-x-2 text-3xl'>
                                 <BsGoogle className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
-                                <FaFacebookF className=' bg-white p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE] hover:border-white  ' />
+                                <FaFacebookF className=' bg-white p-1 rounded border-2 border-[#209CEE]     disabled' />
                             </div>
                             <p className="text-sm font-light  text-white">
                                 Already have an account yet? <Link to={'/login'} className="font-medium  hover:underline dark:text-blue-500">Login</Link>

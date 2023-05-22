@@ -17,9 +17,12 @@ const Nav = () => {
         <div className='sticky top-0 z-30'>
 
 
-            <div className="navbar relative flex justify-between   bg-white shadow-lg ">
-                <Link to={'/'} className="">
-                    <img src={logo} alt="" className="btn btn-ghost hover:bg-white normal-case text-xl" />
+            <div className="navbar relative flex justify-between    bg-white shadow-lg ">
+                <Link to={'/'} className="flex items-center ">
+                    
+                        <img className="w-12 border-2 border-[#209CEE]" src={logo} alt="logo" />
+                        <h1 className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE] text-xl text-white bg-[#209CEE] font-bold'> Play Station</h1>
+                    
                 </Link>
 
 
@@ -44,7 +47,7 @@ const Nav = () => {
                             <Link to={'/all'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>All Toys</Link>
                         </li>
                         <li>
-                            <Link to={'/myToy'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>My Toys</Link>
+                            <Link to={'/myToys'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>My Toys</Link>
                         </li>
                     </ul>
 
