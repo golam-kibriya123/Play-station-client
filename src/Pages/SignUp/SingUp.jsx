@@ -2,12 +2,15 @@ import { useContext, useEffect } from 'react';
 import loginPhoto from '../../assets/login.jpg'
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
 
 const SingUp = () => {
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+    const navigate = useNavigate();
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("SingUp")
@@ -50,7 +53,7 @@ const SingUp = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-
+                navigate(from)
                 console.log(createdUser)
 
             })

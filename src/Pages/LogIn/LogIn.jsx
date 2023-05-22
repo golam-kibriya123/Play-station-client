@@ -1,7 +1,8 @@
 import loginPhoto from '../../assets/login.jpg'
+import logo from '../../assets/logo.png'
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
@@ -11,7 +12,11 @@ const LogIn = () => {
     const { googleLogin, logIn, setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("Login")
-    })
+    });
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/all';
+    const navigate = useNavigate();
+
     const handelLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -27,8 +32,9 @@ const LogIn = () => {
                     title: 'Your login has been success',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                });
                 const user = userCredential.user;
+                navigate(from)
                 console.log(user)
             })
             .catch((error) => {
@@ -83,7 +89,7 @@ const LogIn = () => {
 
                 <div className="flex flex-col items-center  justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-[#209CEE] dark:text-white">
-                        <img className="w-8 h-8  " src="/public/logo.png" alt="logo" />
+                        <img className="w-8 h-8  " src={logo} alt="logo" />
                         <span className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE] text-xl '> Play Station</span>
                     </a>
                     <div className="w-full  rounded-lg md:mt-0 sm:max-w-md xl:p-0  bg-black bg-opacity-60  relative">

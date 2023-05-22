@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddToy = () => {
-
-    const { setTitle } = useContext(AuthContext);
+    const { userName, setTitle } = useContext(AuthContext);
     useEffect(() => {
         setTitle("Add Toy")
     })
@@ -18,12 +18,38 @@ const AddToy = () => {
         const sub_category = form.sub.value;
         const price = form.price.value;
         const rating = form.rating.value;
+        if (rating > 5) {
+            return Swal.fire('rating must be 5 or under 5 ')
+
+        }
         const quantity = form.quantity.value;
         const details = form.details.value;
-        const category = 'super-hero'
-        const toy = { price, product_name, photo, seller, seller_email, quantity, category, sub_category, details, rating, seller_photo };
+        const category = 'super-hero';
+        const user_code = userName;
+        const toy = { price, product_name, photo, seller, seller_email, quantity, category, sub_category, details, rating, seller_photo, user_code };
+        form.reset();
         console.log(toy)
-        form.reset()
+        fetch(`http://localhost:5000/toys`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toy)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.acknowledged)
+                if (data.acknowledged) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your toy has been added',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
 
     }
     return (
@@ -67,7 +93,7 @@ const AddToy = () => {
                         </div>
                         <div>
                             <label htmlFor="price" className="block mb-2 text-sm font-medium ">Toy Price</label>
-                            <input type="text" name="price" id="price" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="50$" required />
+                            <input type="number" name="price" id="price" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="50$" required />
                         </div>
                         <div>
                             <label htmlFor="rating" className="block mb-2 text-sm font-medium ">Rating</label>
