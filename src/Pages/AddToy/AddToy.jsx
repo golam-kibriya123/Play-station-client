@@ -30,7 +30,7 @@ const AddToy = () => {
         const toy = { price, product_name, photo, seller, seller_email, quantity, category, sub_category, details, rating, seller_photo, user_code };
         form.reset();
         console.log(toy)
-        fetch(`http://localhost:5000/toys`, {
+        fetch(`https://play-station-server.vercel.app/toys`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -60,7 +60,7 @@ const AddToy = () => {
             <div >
                 <a className="flex items-center mb-6 text-2xl font-semibold text-[#209CEE] dark:text-white">
                     <img className="w-8 h-8  " src={logo} alt="logo" />
-                    <span className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE] text-[#209CEE] text-xl bg-white'> Play Station</span>
+                    <span className='border-2 h-8 border-l-0 rounded-r-lg px-1 border-[#209CEE]  text-xl bg-white'> Play Station</span>
                 </a>
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white "> Add Your Toy

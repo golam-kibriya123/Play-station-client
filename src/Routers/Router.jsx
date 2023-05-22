@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddToy from "../Pages/AddToy/AddToy";
 import MyToys from "../Pages/MyToys/MyToys";
 import UpdateToy from "../Pages/UpdateToy/UpdateToy";
+import Error from "../Pages/Error/Error";
 
 const router = createBrowserRouter([
     {
@@ -63,9 +64,16 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://play-station-server.vercel.app/toys/${params.id}`)
 
             }
-        ]
-    }
 
+        ]
+
+    }
+    ,
+    {
+        path: '*',
+        element: <Error></Error>
+
+    }
 
 ]);
 export default router;

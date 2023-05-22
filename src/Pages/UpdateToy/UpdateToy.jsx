@@ -10,7 +10,6 @@ const UpdateToy = () => {
     const previousToy = useLoaderData();
     const { details, price, quantity, _id
     } = previousToy[0];
-    console.log(previousToy)
     const updateHandler = event => {
         event.preventDefault();
         const form = event.target;
@@ -18,15 +17,18 @@ const UpdateToy = () => {
         const quantity = form.quantity.value;
         const details = form.details.value;
         const updatedToy = { price, quantity, details };
-        console.log(updatedToy)
-        form.reset()
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        form.reset();
+     
+        fetch(`https://play-station-server.vercel.app/user/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(updatedToy)
+            body: JSON.stringify(updatedToy),
+            withCredentials: true,
+            crossorigin: true
         })
+
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -48,12 +50,12 @@ const UpdateToy = () => {
 
 
 
-                        <div>
+                        <div className=" col-span-3  md:col-span-1">
                             <label htmlFor="price" className="block mb-2 text-sm font-medium ">Toy Price</label>
                             <input type="text" name="price" id="price" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="00$" defaultValue={price} required />
                         </div>
 
-                        <div>
+                        <div className=" col-span-3  md:col-span-1">
                             <label htmlFor="quantity" className="block mb-2 text-sm font-medium">Toy Quantity</label>
                             <input type="text" name="quantity" id="quantity" className="bg-white   text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5  dark:placeholder-gray-400  outline-none focus:bg-blue-100 " placeholder="How many toys are available " defaultValue={quantity} required />
                         </div>
@@ -65,7 +67,7 @@ const UpdateToy = () => {
 
 
 
-                        <button type="submit" className="w-full  hover:bg-white p-1  border-2 hover:border-[#209CEE] cursor-pointer hover:text-[#209CEE] text-white bg-[#209CEE] border-white  ]  focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add Now</button>
+                        <button type="submit" className="w-full  hover:bg-white p-1  border-2 hover:border-[#209CEE] cursor-pointer hover:text-[#209CEE] text-white bg-[#209CEE] border-white  ]  focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Update Now</button>
                     </form>
 
 
