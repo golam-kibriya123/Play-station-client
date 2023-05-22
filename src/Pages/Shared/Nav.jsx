@@ -46,7 +46,7 @@ const Nav = () => {
                             <Link to={'/all'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>All Toys</Link>
                         </li>
                         <li>
-                            <Link to={'/myToys'} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>My Toys</Link>
+                            <Link to={`/myToys/${userName}`} className='  p-1 rounded border-2 border-[#209CEE] cursor-pointer hover:text-white hover:bg-[#209CEE]   '>My Toys</Link>
                         </li>
                     </ul>
 

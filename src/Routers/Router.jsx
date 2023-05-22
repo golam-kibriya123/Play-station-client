@@ -52,8 +52,9 @@ const router = createBrowserRouter([
                 element: <AddToy></AddToy>
             },
             {
-                path: '/myToys',
-                element: <MyToys></MyToys>
+                path: '/myToys/:user_name',
+                element: <MyToys></MyToys>,
+                loader:({params})=>fetch(`https://play-station-server.vercel.app/user/${params.user_name}`)
             }
             ,
             {
