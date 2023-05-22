@@ -1,16 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import Toy from "./Toy";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 const AllToys = () => {
 
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("All Toys")
+        setTitle("| All Toys")
     });
-    const allToys = useLoaderData();
-    const sliceToy = allToys.slice(0, 20);
-    const [toys, setToys] = useState(sliceToy);
+    const toys = useLoaderData();
 
 
     return (
@@ -35,7 +33,7 @@ const AllToys = () => {
                             <td className="bg-[#209CEE] text-white rounded-none "></td>
                             <td className="bg-[#209CEE] text-white rounded-none "></td>
                             <td className="bg-[#209CEE] text-white rounded-none ">{toys.length}</td>
-                            <td className="bg-[#209CEE] text-white rounded-none " > <button className='  p-1 rounded border-2 border-white cursor-pointer text-white bg-[#209CEE]   font-bold hover:bg-white hover:text-[#209CEE] ' onClick={() => { setToys(allToys) }} > See All</button> </td>
+
 
                         </tr>
 

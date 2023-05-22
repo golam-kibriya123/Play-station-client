@@ -13,7 +13,7 @@ const SingUp = () => {
     const navigate = useNavigate();
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("SingUp")
+        setTitle("| SingUp")
     })
     const { createUser, auth, googleLogin } = useContext(AuthContext);
 

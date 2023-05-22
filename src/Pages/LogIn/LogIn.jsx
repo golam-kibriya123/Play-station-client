@@ -11,7 +11,7 @@ const LogIn = () => {
 
     const { googleLogin, logIn, setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("Login")
+        setTitle("| Login")
     });
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';

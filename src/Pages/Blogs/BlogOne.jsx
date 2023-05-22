@@ -9,7 +9,7 @@ const BlogOne = () => {
 
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("Blogs")
+        setTitle("| Blogs")
     });
     useEffect(() => {
         AOS.init();

@@ -8,7 +8,7 @@ const Details = () => {
 
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("Details")
+        setTitle("| Details")
     });
     const navigate = useNavigate()
     const data = useLoaderData();

@@ -1,11 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateToy = () => {
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("Update Toys")
+        setTitle("| Update Toys")
     });
     const previousToy = useLoaderData();
     const { details, price, quantity, _id
@@ -18,7 +19,7 @@ const UpdateToy = () => {
         const details = form.details.value;
         const updatedToy = { price, quantity, details };
         form.reset();
-     
+
         fetch(`https://play-station-server.vercel.app/user/${_id}`, {
             method: "PUT",
             headers: {
@@ -31,9 +32,27 @@ const UpdateToy = () => {
 
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-            })
+                if (data.status) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your toy has been added',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
 
+            })
+            .catch((e) => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: e.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+            )
     }
     return (
 

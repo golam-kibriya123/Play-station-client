@@ -6,7 +6,7 @@ import logo from '../../assets/logo.png'
 const AddToy = () => {
     const { userName, setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("Add Toy")
+        setTitle("| Add Toy")
     })
     const addToyHandler = event => {
         event.preventDefault();

@@ -8,7 +8,7 @@ const MyToys = () => {
 
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("My Toys")
+        setTitle("| My Toys")
     });
     const myToys = useLoaderData();
     let seeAll = true;

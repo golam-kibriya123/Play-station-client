@@ -9,7 +9,7 @@ import Hot from "../Hot/Hot";
 const Home = () => {
     const { setTitle } = useContext(AuthContext);
     useEffect(() => {
-        setTitle("Home")
+        setTitle("| Home")
     });
  
 
