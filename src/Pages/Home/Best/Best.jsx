@@ -26,7 +26,7 @@ const Best = () => {
                 <img src={logo} alt="" className='border-2 border-[#209CEE]' />
                 <h1 className='h-full text-white text-2xl bg-[#209CEE] font-bold p-1'>Best Seller</h1>
             </div>
-            <div className=' justify-center grid grid-cols-5 gap-5'>
+            <div className=' justify-center grid grid-flow-col-1 mg:grid-cols-3 lg:grid-cols-5 gap-5'>
 
                 {newBest.map(be => {
                     if (be.rating > 1) {
@@ -49,7 +49,7 @@ const Best = () => {
                     }
                     return <div className="relative " key={(be._id)}>
 
-                        <img src={be.photo} className=" h-96" />
+                        <img src={be.photo} className=" h-96 w-full" />
 
 
                         <div className="flex absolute top-0 bg-[#209CEE] text-white">
